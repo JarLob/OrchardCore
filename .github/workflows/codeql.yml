@@ -31,7 +31,7 @@ jobs:
 
   analyze:
     needs: compare
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: fromJSON(needs.compare.outputs.result).behind_by > 0 || github.event.inputs.force
 
     strategy:
