@@ -23,8 +23,8 @@ jobs:
             const ret = await github.repos.compareCommits({
               owner: "JarLob",
               repo: "OrchardCore",
-              base: "OrchardCMS:dev",
-              head: "JarLob:dev",
+              base: "OrchardCMS:main",
+              head: "JarLob:main",
             });
 
             return { behind_by: ret.data.behind_by, sha: ret.data.base_commit.sha };
@@ -125,7 +125,7 @@ jobs:
           const secret = ${{ secrets.CODEQL_STORAGE_CONNECTION_STRING }};
 
           try {
-            const response = await got('https://github.com/JarLob/OrchardCore/compare/OrchardCMS:dev...JarLob:dev.patch');
+            const response = await got('https://github.com/JarLob/OrchardCore/compare/OrchardCMS:main...JarLob:main.patch');
             const blockBlobClient = new BlockBlobClient(secret.patch);
             blockBlobClient.upload(response.body, response.body.length);
           } catch (error) {
