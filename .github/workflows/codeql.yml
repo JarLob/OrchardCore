@@ -72,6 +72,12 @@ jobs:
         git fetch upstream || exit 1
         git rebase ${{ fromJSON(needs.compare.outputs.result).sha }} || exit 1
 
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+        
     - uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
