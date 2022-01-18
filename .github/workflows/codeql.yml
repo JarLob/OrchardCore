@@ -86,13 +86,9 @@ jobs:
     #- name: Autobuild
     #  uses: github/codeql-action/autobuild@v1
       
-    - name: Setup .NET Core 5.0 on ${{ matrix.os }}
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.*
     - name: Build
       run: |
-        dotnet build --configuration Release --framework net5.0 -p:UseSharedCompilation=false
+        dotnet build --configuration Release --framework net6.0 -p:UseSharedCompilation=false
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
